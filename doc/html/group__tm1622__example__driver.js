@@ -1,0 +1,26 @@
+var group__tm1622__example__driver =
+[
+    [ "TM1622_BASIC_DEFAULT_BIAS", "group__tm1622__example__driver.html#ga25310fb615750e035f6664fc9e8a165c", null ],
+    [ "TM1622_BASIC_DEFAULT_CLOCK", "group__tm1622__example__driver.html#ga36ae28a486027dc4b7f9ab3dc67e0e7a", null ],
+    [ "TM1622_OUTPUT_DEFAULT_BIAS", "group__tm1622__example__driver.html#gabea6544d4ff17c8328a59257ff230331", null ],
+    [ "TM1622_OUTPUT_DEFAULT_CLOCK", "group__tm1622__example__driver.html#gae709b99e7a6a434ca8a4b848509eac48", null ],
+    [ "tm1622_basic_clear", "group__tm1622__example__driver.html#gae934d2dabfc36bc7c18e4c439f144c1c", null ],
+    [ "tm1622_basic_deinit", "group__tm1622__example__driver.html#gae8df0311dd28e83c6c9acb4afe359736", null ],
+    [ "tm1622_basic_disable_tone", "group__tm1622__example__driver.html#ga224e2cf1d8734d775d5d0290b11f5cf3", null ],
+    [ "tm1622_basic_display_off", "group__tm1622__example__driver.html#ga63eb534273fba33dc1b94c11dd4ac555", null ],
+    [ "tm1622_basic_display_on", "group__tm1622__example__driver.html#ga8878ccceead1307a48ae677d6ca5da6f", null ],
+    [ "tm1622_basic_enable_tone", "group__tm1622__example__driver.html#ga0976dad30f5331576f4f3a51827efd97", null ],
+    [ "tm1622_basic_init", "group__tm1622__example__driver.html#ga6f2f359f1c3758e9cef3f7e92d1dee6c", null ],
+    [ "tm1622_basic_set_tone_freq", "group__tm1622__example__driver.html#gaecc9da1973df72d2ca4e9b5d784ccaaf", null ],
+    [ "tm1622_basic_write", "group__tm1622__example__driver.html#gad1e7f10b64ec1a472eac40c66a1ec233", null ],
+    [ "tm1622_output_clear", "group__tm1622__example__driver.html#ga70a8f14b68d3972cd9909e5aa79aae1e", null ],
+    [ "tm1622_output_deinit", "group__tm1622__example__driver.html#gafa719b54f5cd90988ced6e6598938eaa", null ],
+    [ "tm1622_output_display_off", "group__tm1622__example__driver.html#ga715f38f3a4702ef53c5f128c4bc2f791", null ],
+    [ "tm1622_output_display_on", "group__tm1622__example__driver.html#ga13d52228c20d0b8e4c7a5b9ed29de977", null ],
+    [ "tm1622_output_feed_watchdog", "group__tm1622__example__driver.html#gaa65fe0ccdbabcd79020718ace9fde118", null ],
+    [ "tm1622_output_init", "group__tm1622__example__driver.html#ga43d9f03f646d4d1f5e27f4567ce14a3a", null ],
+    [ "tm1622_output_set_freq", "group__tm1622__example__driver.html#ga850fec7b77118a7e2eaf91f84f43acb2", null ],
+    [ "tm1622_output_set_timer", "group__tm1622__example__driver.html#ga5904056aa5db4a1a77aee46578960b87", null ],
+    [ "tm1622_output_set_watchdog", "group__tm1622__example__driver.html#ga075ff011f62d4101ce3e344522651e01", null ],
+    [ "tm1622_output_write", "group__tm1622__example__driver.html#gaf19ff20e82abbd813a69c0a1d7e39bd8", null ]
+];
