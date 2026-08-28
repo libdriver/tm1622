@@ -140,6 +140,20 @@ static uint8_t a_tm1622_write_bits(tm1622_handle_t *handle, uint32_t data, uint8
 }
 
 /**
+ * @brief     reverse the 4 bits order
+ * @param[in] data input data
+ * @return    reversed 4 bits data
+ * @note      none
+ */
+static uint8_t a_tm1622_reverse_4bits(uint8_t data)
+{
+    data = (uint8_t)(((data & 0x03) << 2) | ((data & 0x0C) >> 2));        /* swap the two bit pairs */
+    data = (uint8_t)(((data & 0x05) << 1) | ((data & 0x0A) >> 1));        /* swap the adjacent bits */
+    
+    return (uint8_t)(data & 0x0F);                                        /* return reversed 4 bits */
+}
+
+/**
  * @brief      read bits
  * @param[in]  *handle pointer to a tm1622 handle structure
  * @param[out] *data pointer to an output data buffer
@@ -268,12 +282,12 @@ static uint8_t a_tm1622_write_ram(tm1622_handle_t *handle, uint8_t addr, uint8_t
     
     for (i = 0; i < len; i++)                                                                   /* loop */
     {
-        res = a_tm1622_write_bits(handle, (uint32_t)((data[i] >> 0) & 0x0F), 4);                /* write bits */
+        res = a_tm1622_write_bits(handle, a_tm1622_reverse_4bits((data[i] >> 0) & 0x0F), 4);    /* write bits */
         if (res != 0)                                                                           /* check the result */
         {
             return 1;                                                                           /* return error */
         }
-        res = a_tm1622_write_bits(handle, (uint32_t)((data[i] >> 4) & 0x0F), 4);                /* write bits */
+        res = a_tm1622_write_bits(handle, a_tm1622_reverse_4bits((data[i] >> 4) & 0x0F), 4);    /* write bits */
         if (res != 0)                                                                           /* check the result */
         {
             return 1;                                                                           /* return error */
@@ -334,13 +348,13 @@ static uint8_t a_tm1622_read_ram(tm1622_handle_t *handle, uint8_t addr, uint8_t 
         {
             return 1;                                                            /* return error */
         }
-        data[i] = (uint8_t)(output & 0xF);                                       /* set data */
+        data[i] = a_tm1622_reverse_4bits((uint8_t)(output & 0xF));               /* set data */
         res = a_tm1622_read_bits(handle, &output, 4);                            /* read bits */
         if (res != 0)                                                            /* check the result */
         {
             return 1;                                                            /* return error */
         }
-        data[i] |= (uint8_t)(output & 0xF) << 4;                                 /* set data */
+        data[i] |= a_tm1622_reverse_4bits((uint8_t)(output & 0xF)) << 4;         /* set data */
     }
     res = handle->cs_gpio_write(1);                                              /* set high */
     if (res != 0)                                                                /* check the result */
@@ -402,12 +416,13 @@ static uint8_t a_tm1622_read_modify_write(tm1622_handle_t *handle, uint8_t addr,
         {
             return 1;                                                            /* return error */
         }
-        input_lsb = (uint8_t)(data & 0xF);                                       /* set input */
+        input_lsb = a_tm1622_reverse_4bits((uint8_t)(data & 0xF));               /* set input */
         if (and_or != NULL)                                                      /* not null */
         {
             and_or(i, 0, input_lsb, &output_lsb);                                /* run and or function */
         }
-        res = a_tm1622_write_bits(handle, (uint32_t)(output_lsb & 0x0F), 4);     /* write bits */
+        res = a_tm1622_write_bits(handle,
+                                  a_tm1622_reverse_4bits(output_lsb & 0x0F), 4); /* write bits */
         if (res != 0)                                                            /* check the result */
         {
             return 1;                                                            /* return error */
@@ -418,12 +433,13 @@ static uint8_t a_tm1622_read_modify_write(tm1622_handle_t *handle, uint8_t addr,
         {
             return 1;                                                            /* return error */
         }
-        input_msb = (uint8_t)(data & 0xF);                                       /* set input */
+        input_msb = a_tm1622_reverse_4bits((uint8_t)(data & 0xF));               /* set input */
         if (and_or != NULL)                                                      /* not null */
         {
             and_or(i, 1, input_msb, &output_msb);                                /* run and or function */
         }
-        res = a_tm1622_write_bits(handle, (uint32_t)(output_msb & 0x0F), 4);     /* write bits */
+        res = a_tm1622_write_bits(handle,
+                                  a_tm1622_reverse_4bits(output_msb & 0x0F), 4); /* write bits */
         if (res != 0)                                                            /* check the result */
         {
             return 1;                                                            /* return error */
